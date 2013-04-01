@@ -2,8 +2,14 @@
 
 <head>
   <script src="d3.v3.min.js"></script>
+  <style>
+    path {
+border: 1px solid black;
+    }
+  </style>
 </head>
 <body>
+  <div id="vis"></div>
 <script>
 // Coffee Flavour Wheel by Jason Davies,
 // http://www.jasondavies.com/coffee-wheel/
@@ -49,6 +55,7 @@ d3.json("wheel.json", function(json) {
       .attr("d", arc)
       .attr("fill-rule", "evenodd")
       .style("fill", colour)
+      .style("stroke", "white")
       .on("click", click);
 
   var text = vis.selectAll("text").data(nodes);
@@ -126,7 +133,7 @@ function colour(d) {
     // L*a*b* might be better here...
     return d3.hsl((a.h + b.h) / 2, a.s * 1.2, a.l / 1.2);
   }
-  return d.colour || "#fff";
+  return d.colour || "#ddf";
 }
 
 // Interpolate the scales!
